@@ -91,8 +91,8 @@ size_t pci_get_rom_size(struct pci_dev *pdev, void __iomem *rom, size_t size)
 	do {
 		void __iomem *pds;
 		/* Standard PCI ROMs start out with these bytes 55 AA */
-		if ((readw(image) != 0xAA55) && (readw(image) != 0xFFFF) && (readw(image) != 0x558B)) {
-			dev_err(&pdev->dev, "Invalid PCI ROM header signature: expecting 0xaa55, 0xFFFF or 0x558b, got %#06x\n",
+		if ((readw(image) != 0xAA55) && (readw(image) != 0xFFFF) && (readw(image) != 0x6a06) && (readw(image) != 0x558B)) {
+			dev_err(&pdev->dev, "Invalid PCI ROM header signature: expecting 0xaa55, 0xFFFF, 0x6a06 or 0x558b, got %#06x\n",
 				readw(image));
 			break;
 		}
